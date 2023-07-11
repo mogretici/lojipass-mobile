@@ -2,7 +2,7 @@ import { Box, HStack, Text, Menu, Pressable } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { useRouter, useNavigation } from "expo-router";
-const Header = ({ title, logout, back }) => {
+const Header = ({ title, logout, back, home }) => {
   const router = useRouter();
   const navigation = useNavigation();
   return (
@@ -34,7 +34,24 @@ const Header = ({ title, logout, back }) => {
             <MaterialIcons
               alignSelf={"center"}
               name="arrow-back"
-              size={25}
+              size={30}
+              color="#ededed"
+            />
+          </Text>
+        )}
+        {home && (
+          <Text
+            fontSize={40}
+            flex={1}
+            color="#ededed"
+            onPress={() => {
+              router.replace("/TicketInquiryPage");
+            }}
+          >
+            <MaterialIcons
+              alignSelf={"center"}
+              name="home"
+              size={30}
               color="#ededed"
             />
           </Text>
@@ -43,14 +60,20 @@ const Header = ({ title, logout, back }) => {
           {title}
         </Text>
         {logout && (
-          <Text fontSize={40} color="#ededed">
-            <Pressable
-              onPress={() => {
-                router.replace("/LoginPage");
-              }}
-            >
-              <MaterialIcons name="logout" size={30} color="#ededed" />
-            </Pressable>
+          <Text
+            fontSize={40}
+            flex={1}
+            color="#ededed"
+            onPress={() => {
+              router.replace("/LoginPage");
+            }}
+          >
+            <MaterialIcons
+              alignSelf={"center"}
+              name="logout"
+              size={30}
+              color="#ededed"
+            />
           </Text>
         )}
       </HStack>

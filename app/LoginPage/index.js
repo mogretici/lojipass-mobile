@@ -10,14 +10,15 @@ import {
   KeyboardAvoidingView,
   Icon,
   Text,
+  useToast,
 } from "native-base";
 import { TouchableWithoutFeedback, Keyboard } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { LoginUser } from "../../API.js";
 import React, { useState } from "react";
-import AlertBox from "../../components/AlertBox.js";
 import { useUser } from "../../context/UserContext.js";
+import ToastAlertBox from "../../components/ToastAlertBox";
 
 const LoginPage = () => {
   const params = useLocalSearchParams();
@@ -26,19 +27,21 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState(resEmail ? resEmail : "a@a.com");
   const [password, setPassword] = useState(resEmail ? "" : "111111");
-  const [alert, setAlert] = useState({
-    isOpen: false,
-    message: "",
-    status: "",
-  });
+  const toast = useToast();
   const router = useRouter();
   const { setUserInformation } = useUser();
 
   const handleLogin = async () => {
-    setAlert({
-      isOpen: true,
-      message: "Giriş yapılıyor lütfen bekleyiniz..",
-      status: "success",
+    toast.show({
+      duration: null,
+      render: () => {
+        return (
+          <ToastAlertBox
+            description={"GİRİŞ YAPILIYOR LÜTFEN BEKLEYİN..."}
+            status={"success"}
+          />
+        );
+      },
     });
     setLoading(true);
     const input = {
@@ -48,26 +51,26 @@ const LoginPage = () => {
     await LoginUser(input)
       .then((res) => {
         console.log(res);
-        setLoading(false);
-        setAlert({
-          isOpen: false,
-          message: "",
-          status: "",
-        });
+        toast.closeAll(), setLoading(false);
         res.token
           ? (setUserInformation(res), router.replace("/TicketInquiryPage"))
-          : setAlert({
-              isOpen: true,
-              message: "Giriş başarısız",
-              status: "error",
+          : toast.show({
+              render: () => {
+                return <ToastAlertBox description={"GİRİŞ BAŞARISIZ..."} />;
+              },
             });
       })
       .catch((err) => {
         setLoading(false);
-        setAlert({
-          isOpen: true,
-          message: `Giriş Başarısız: ${err.response.data}`,
-          status: "error",
+        toast.closeAll();
+        toast.show({
+          render: () => {
+            return (
+              <ToastAlertBox
+                description={`GİRİŞ BAŞARISIZ: ${err.response.data}`}
+              />
+            );
+          },
         });
       });
   };
@@ -99,6 +102,7 @@ const LoginPage = () => {
                 _dark={{
                   color: "warmGray.50",
                 }}
+                letterSpacing="2xl"
                 fontFamily={"Play"}
               >
                 LOJIPASS
@@ -188,7 +192,6 @@ const LoginPage = () => {
                 backgroundColor={"#002B5B"}
                 rounded={"md"}
                 onPress={() => {
-                  console.log("Kaydol butonuna basıldı.");
                   router.push("/RegisterPage");
                 }}
               >
@@ -205,9 +208,6 @@ const LoginPage = () => {
               </Button>
             </HStack>
           </Box>
-          {alert.isOpen && (
-            <AlertBox message={alert.message} status={alert.status} />
-          )}
         </Center>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>

@@ -13,14 +13,17 @@ import {
   Divider,
   Pressable,
   Button,
+  useToast,
 } from "native-base";
 import { useUser } from "../../context/UserContext";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import Wheel from "../../assets/images/wheel.png";
+import ToastAlertBox from "../../components/ToastAlertBox";
+
 const TripDetailsPage = () => {
   const router = useRouter();
   const [selectedSeat, setSelectedSeat] = useState([]);
-
+  const toast = useToast();
   const { ticketRoute, ticketDetail, user, createFullTicket } = useUser();
   const handleSelectSeat = (seat) => {
     setSelectedSeat((prev) => {
@@ -28,7 +31,16 @@ const TripDetailsPage = () => {
         ? prev.includes(seat)
           ? prev.filter((item) => item !== seat)
           : selectedSeat.length === 5
-          ? (console.log("5 koltuktan fazla seçemezsiniz"), prev)
+          ? (toast.show({
+              render: () => {
+                return (
+                  <ToastAlertBox
+                    description={"EN FAZLA 5 ADET KOLTUK SEÇEBİLİRSİNİZ !"}
+                  />
+                );
+              },
+            }),
+            prev)
           : [...prev, seat]
         : seat;
     });
@@ -164,7 +176,17 @@ const TripDetailsPage = () => {
                         key={seat.seatNumber}
                         onPress={() => {
                           seat.seatState === "full"
-                            ? console.log("bu koltuk dolu")
+                            ? toast.show({
+                                render: () => {
+                                  return (
+                                    <ToastAlertBox
+                                      description={
+                                        "SEÇMEK İSTEDİĞİNİZ KOLTUK DOLU !"
+                                      }
+                                    />
+                                  );
+                                },
+                              })
                             : handleSelectSeat(seat.seatNumber);
                         }}
                       >
@@ -220,15 +242,33 @@ const TripDetailsPage = () => {
                           key={seat.seatNumber}
                           onPress={() => {
                             seat.seatState === "full"
-                              ? console.log("Bu koltuk doludur")
-                              : ticketDetail.fullSeats[seat.seatNumber - 1]
+                              ? toast.show({
+                                  render: () => {
+                                    return (
+                                      <ToastAlertBox
+                                        description={
+                                          "SEÇMEK İSTEDİĞİNİZ KOLTUK DOLU !"
+                                        }
+                                      />
+                                    );
+                                  },
+                                })
+                              : ticketDetail.fullSeats[seat.seatNumber - 2]
                                   .seatGender === user.sex ||
-                                ticketDetail.fullSeats[seat.seatNumber - 1]
+                                ticketDetail.fullSeats[seat.seatNumber - 2]
                                   .seatGender === ""
                               ? handleSelectSeat(seat.seatNumber)
-                              : console.log(
-                                  "Bu koltuk cinsiyetinize uygun değildir"
-                                );
+                              : toast.show({
+                                  render: () => {
+                                    return (
+                                      <ToastAlertBox
+                                        description={
+                                          "SEÇMEK İSTEDİĞİNİZ KOLTUK CİNSİYETİNİZE UYGUN DEĞİL !"
+                                        }
+                                      />
+                                    );
+                                  },
+                                });
                           }}
                         >
                           <Box>
@@ -281,19 +321,34 @@ const TripDetailsPage = () => {
                         <Pressable
                           key={seat.seatNumber}
                           onPress={() => {
-                            console.log(
-                              ticketDetail.fullSeats[seat.seatNumber]
-                            );
                             seat.seatState === "full"
-                              ? console.log("Bu koltuk doludur")
+                              ? toast.show({
+                                  render: () => {
+                                    return (
+                                      <ToastAlertBox
+                                        description={
+                                          "SEÇMEK İSTEDİĞİNİZ KOLTUK DOLU !"
+                                        }
+                                      />
+                                    );
+                                  },
+                                })
                               : ticketDetail.fullSeats[seat.seatNumber]
                                   .seatGender === user.sex ||
                                 ticketDetail.fullSeats[seat.seatNumber]
                                   .seatGender === ""
                               ? handleSelectSeat(seat.seatNumber)
-                              : console.log(
-                                  `Bu koltuk cinsiyetinize uygun değildir`
-                                );
+                              : toast.show({
+                                  render: () => {
+                                    return (
+                                      <ToastAlertBox
+                                        description={
+                                          "SEÇMEK İSTEDİĞİNİZ KOLTUK CİNSİYETİNİZE UYGUN DEĞİL !"
+                                        }
+                                      />
+                                    );
+                                  },
+                                });
                           }}
                         >
                           <Box>

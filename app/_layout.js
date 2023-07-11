@@ -7,7 +7,7 @@ export default function RootLayoutNav() {
   return (
     <UserProvider>
       <NativeBaseProvider>
-        <Box backgroundColor={"text.300"} h={"full"}>
+        <Box backgroundColor={"#d4d4d4"} h={"full"}>
           <Slot />
         </Box>
       </NativeBaseProvider>

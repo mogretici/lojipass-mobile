@@ -12,23 +12,24 @@ import {
   CheckIcon,
   HStack,
   Input,
-  Alert,
+  useToast,
   Pressable,
 } from "native-base";
 import { useUser } from "../../context/UserContext";
 import { router } from "expo-router";
 import cities from "../../assets/cities.json";
 import { MaterialIcons } from "@expo/vector-icons";
+import ToastAlertBox from "../../components/ToastAlertBox";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 const TicketInquiryPage = () => {
   const { user, createTicketRoute } = useUser();
+  const toast = useToast();
   const [fromCity, setFromCity] = useState("ÇANAKKALE");
   const [toCity, setToCity] = useState("İSTANBUL");
-  const [date, setDate] = useState("13.07.2023");
+  const [date, setDate] = useState("25.07.2023");
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [allCities, setAllCities] = useState([]);
-  const [alert, setAlert] = useState(false);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -169,7 +170,6 @@ const TicketInquiryPage = () => {
             date={new Date()}
             onConfirm={(e) => {
               hideDatePicker();
-              console.log(e.toLocaleDateString());
               setDate(e.toLocaleDateString());
             }}
             onCancel={() => {
@@ -183,10 +183,15 @@ const TicketInquiryPage = () => {
             backgroundColor={"#002B5B"}
             onPress={() => {
               if (!fromCity || !toCity || !date) {
-                setAlert(true);
-                setTimeout(() => {
-                  setAlert(false);
-                }, 4000);
+                toast.show({
+                  render: () => {
+                    return (
+                      <ToastAlertBox
+                        description={"LÜTFEN TÜM ALANLARI DOLDURUN!"}
+                      />
+                    );
+                  },
+                });
                 return;
               }
               createTicketRoute({
@@ -201,21 +206,6 @@ const TicketInquiryPage = () => {
           >
             SEFERLERİ GETİR
           </Button>
-          {alert && (
-            <Alert w="90%" variant={"solid"} status={"error"}>
-              <VStack space={2} flexShrink={1} w="100%">
-                <HStack
-                  flexShrink={1}
-                  space={5}
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <Alert.Icon />
-                  <Text color="white">Lütfen Tüm Alanları Doldurun</Text>
-                </HStack>
-              </VStack>
-            </Alert>
-          )}
         </VStack>
       </Center>
     </>

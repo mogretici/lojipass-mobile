@@ -8,6 +8,8 @@ import {
   Center,
   Text,
   Pressable,
+  useToast,
+  Icon,
 } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -19,18 +21,15 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { RegisterUser } from "../../API";
-import AlertBox from "../../components/AlertBox";
+import ToastAlertBox from "../../components/ToastAlertBox";
 import Header from "../../components/Header";
 
 const RegisterPage = () => {
+  const toast = useToast();
   const [showPass, setShowPass] = useState(false);
   const [birthday, setBirthday] = useState("");
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [alert, setAlert] = useState({
-    isOpen: false,
-    message: "",
-    status: "",
-  });
+
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -95,10 +94,17 @@ const RegisterPage = () => {
                 }}
                 validationSchema={RegisterSchema}
                 onSubmit={async (values) => {
-                  setAlert({
-                    isOpen: true,
-                    message: "Kayıt işlemi yapılıyor. Lütfen bekleyiniz..",
-                    status: "success",
+                  toast.show({
+                    render: () => {
+                      return (
+                        <ToastAlertBox
+                          status={"success"}
+                          description={
+                            "KAYIT İŞLEMİ YAPILIYOR. LÜTFEN BEKLEYİNİZ.."
+                          }
+                        />
+                      );
+                    },
                   });
                   let data = {
                     name: values.name + " " + values.surname,
@@ -111,18 +117,16 @@ const RegisterPage = () => {
                   console.log(data);
                   await RegisterUser(data)
                     .then((res) => {
-                      setAlert({
-                        isOpen: false,
-                        message: "",
-                        status: "",
-                      });
-                      console.log("res", res.status);
                       res._id
-                        ? (setAlert({
-                            isOpen: true,
-                            message:
-                              "Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz..",
-                            status: "success",
+                        ? (toast.show({
+                            render: () => {
+                              return (
+                                <ToastAlertBox
+                                  status={"success"}
+                                  description={"KAYIT BAŞARILI!"}
+                                />
+                              );
+                            },
                           }),
                           setTimeout(() => {
                             router.push({
@@ -130,17 +134,25 @@ const RegisterPage = () => {
                               params: { resEmail: values.email },
                             });
                           }, 3000))
-                        : setAlert({
-                            isOpen: true,
-                            message: "Kayıt başarısız",
-                            status: "error",
+                        : toast.show({
+                            render: () => {
+                              return (
+                                <ToastAlertBox
+                                  description={"KAYIT BAŞARISIZ !"}
+                                />
+                              );
+                            },
                           });
                     })
                     .catch((err) => {
-                      setAlert({
-                        isOpen: true,
-                        message: `Kayıt Başarısız: ${err.response.data}`,
-                        status: "error",
+                      toast.show({
+                        render: () => {
+                          return (
+                            <ToastAlertBox
+                              description={`KAYIT BAŞARISIZ: ${err.response.data}`}
+                            />
+                          );
+                        },
                       });
                     });
                 }}
@@ -297,7 +309,6 @@ const RegisterPage = () => {
                       onConfirm={(e) => {
                         handleConfirm(e);
                         values.birthday = e.toLocaleDateString();
-                        console.log(e.toLocaleDateString());
                         handleChange("birthday");
                       }}
                       onCancel={() => {
@@ -512,9 +523,6 @@ const RegisterPage = () => {
             </Box>
           </Center>
         </KeyboardAwareScrollView>
-        {alert.isOpen && (
-          <AlertBox message={alert.message} status={alert.status} />
-        )}
       </>
     </TouchableWithoutFeedback>
   );
