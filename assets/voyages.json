@@ -1,0 +1,890 @@
+{
+    "IST-CKL-1": {
+        "company": "PAMUKKALE",
+        "from": "İSTANBUL",
+        "to": "ÇANAKKALE",
+        "date": "12.07.2023",
+        "time": "13:00",
+        "price": "470",
+        "seatCount": 20,
+        "fullSeats": [
+            {
+                "seatNumber": 1,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 2,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 3,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 4,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 5,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 6,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 7,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 8,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 9,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 10,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 11,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 12,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 13,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 14,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 15,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 16,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 17,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 18,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 19,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 20,
+                "seatGender": "",
+                "seatState": "empty"
+            }
+        ]
+    },
+    "IST-CKL-2": {
+        "company": "ULUSOY",
+        "from": "İSTANBUL",
+        "to": "ÇANAKKALE",
+        "date": "12.07.2023",
+        "time": "15:30",
+        "price": "520",
+        "seatCount": 20,
+        "fullSeats": [
+            {
+                "seatNumber": 1,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 2,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 3,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 4,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 5,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 6,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 7,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 8,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 9,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 10,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 11,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 12,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 13,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 14,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 15,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 16,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 17,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 18,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 19,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 20,
+                "seatGender": "",
+                "seatState": "empty"
+            }
+        ]
+    },
+    "IST-CKL-3": {
+        "company": "METRO",
+        "from": "İSTANBUL",
+        "to": "ÇANAKKALE",
+        "date": "13.07.2023",
+        "time": "14:45",
+        "price": "450",
+        "seatCount": 20,
+        "fullSeats": [
+            {
+                "seatNumber": 1,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 2,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 3,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 4,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 5,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 6,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 7,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 8,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 9,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 10,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 11,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 12,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 13,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 14,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 15,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 16,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 17,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 18,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 19,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 20,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            }
+        ]
+    },
+    "IST-CKL-4": {
+        "company": "PAMUKKALE",
+        "from": "İSTANBUL",
+        "to": "ÇANAKKALE",
+        "date": "13.07.2023",
+        "time": "09:30",
+        "price": "380",
+        "seatCount": 20,
+        "fullSeats": [
+            {
+                "seatNumber": 1,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 2,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 3,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 4,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 5,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 6,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 7,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 8,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 9,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 10,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 11,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 12,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 13,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 14,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 15,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 16,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 17,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 18,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 19,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 20,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            }
+        ]
+    },
+    "CKL-IST-1": {
+        "company": "TRUVA",
+        "from": "ÇANAKKALE",
+        "to": "İSTANBUL",
+        "date": "12.07.2023",
+        "time": "15:30",
+        "price": "420",
+        "seatCount": 20,
+        "fullSeats": [
+            {
+                "seatNumber": 1,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 2,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 3,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 4,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 5,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 6,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 7,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 8,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 9,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 10,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 11,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 12,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 13,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 14,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 15,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 16,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 17,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 18,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 19,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 20,
+                "seatGender": "",
+                "seatState": "empty"
+            }
+        ]
+    },
+    "CKL-IST-2": {
+        "company": "KAMİL KOÇ",
+        "from": "ÇANAKKALE",
+        "to": "İSTANBUL",
+        "date": "12.07.2023",
+        "time": "17:00",
+        "price": "390",
+        "seatCount": 20,
+        "fullSeats": [
+            {
+                "seatNumber": 1,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 2,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 3,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 4,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 5,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 6,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 7,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 8,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 9,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 10,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 11,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 12,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 13,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 14,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 15,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 16,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 17,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 18,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 19,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 20,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            }
+        ]
+    },
+    "CKL-IST-3": {
+        "company": "KAMİL KOÇ",
+        "from": "ÇANAKKALE",
+        "to": "İSTANBUL",
+        "date": "13.07.2023",
+        "time": "12:00",
+        "price": "400",
+        "seatCount": 20,
+        "fullSeats": [
+            {
+                "seatNumber": 1,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 2,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 3,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 4,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 5,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 6,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 7,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 8,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 9,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 10,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 11,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 12,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 13,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 14,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 15,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 16,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 17,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 18,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 19,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 20,
+                "seatGender": "",
+                "seatState": "empty"
+            }
+        ]
+    },
+    "CKL-IST-4": {
+        "company": "ULUSOY",
+        "from": "ÇANAKKALE",
+        "to": "İSTANBUL",
+        "date": "13.07.2023",
+        "time": "14:15",
+        "price": "440",
+        "seatCount": 20,
+        "fullSeats": [
+            {
+                "seatNumber": 1,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 2,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 3,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 4,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 5,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 6,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 7,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 8,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 9,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 10,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 11,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 12,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 13,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 14,
+                "seatGender": "Erkek",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 15,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 16,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            },
+            {
+                "seatNumber": 17,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 18,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 19,
+                "seatGender": "",
+                "seatState": "empty"
+            },
+            {
+                "seatNumber": 20,
+                "seatGender": "Kadın",
+                "seatState": "full"
+            }
+        ]
+    }
+}
