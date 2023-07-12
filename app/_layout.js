@@ -3,7 +3,6 @@ import { NativeBaseProvider, Box } from "native-base";
 import { UserProvider } from "../context/UserContext";
 
 export default function RootLayoutNav() {
-  // #FFF5DA
   return (
     <UserProvider>
       <NativeBaseProvider>

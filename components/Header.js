@@ -1,4 +1,4 @@
-import { Box, HStack, Text, Menu, Pressable } from "native-base";
+import { Box, HStack, Text } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { useRouter, useNavigation } from "expo-router";

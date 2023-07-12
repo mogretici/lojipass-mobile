@@ -57,8 +57,6 @@ const PaymentPage = () => {
   };
 
   const handlePayment = () => {
-    console.log(creditInfo);
-    console.log(ticket);
     !cardNumber || !cvc || !holderName || !expiryDate
       ? toast.show({
           render: () => {

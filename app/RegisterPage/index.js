@@ -127,7 +127,6 @@ const RegisterPage = () => {
                       sex: values.gender,
                       password: values.password,
                     };
-                    console.log(data);
                     createCacheUser(data);
                     await RegisterUser(data)
                       .then((res) => {

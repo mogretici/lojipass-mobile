@@ -40,7 +40,6 @@ const LoginPage = () => {
     };
     await LoginUser(input)
       .then((res) => {
-        console.log(res);
         toast.closeAll(), setLoading(false);
         res.token
           ? (setUserInformation(res), router.replace("/TicketInquiryPage"))

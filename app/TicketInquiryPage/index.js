@@ -18,7 +18,7 @@ import {
 import { useUser } from "../../context/UserContext";
 import { router } from "expo-router";
 import cities from "../../assets/cities.json";
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import ToastAlertBox from "../../components/ToastAlertBox";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
@@ -76,7 +76,7 @@ const TicketInquiryPage = () => {
             </Box>
             <MaterialIcons name="pin-drop" size={24} color="#002B5B" />
           </VStack>
-          <VStack w={"90%"} flex={10} space={4} p={5}>
+          <VStack w={"90%"} flex={10} space={4} py={5}>
             <Box flex={2}>
               <Text>Nereden?</Text>
               <Select
@@ -123,7 +123,7 @@ const TicketInquiryPage = () => {
               </Select>
             </Box>
           </VStack>
-          <VStack justifyContent={"center"}>
+          <VStack flex={2} justifyContent={"center"}>
             <Pressable
               onPress={() => {
                 let temp = fromCity;
