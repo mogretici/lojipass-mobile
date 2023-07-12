@@ -130,10 +130,10 @@ const LoginPage = () => {
                 <Input
                   size={"2xl"}
                   variant={"filled"}
-                  rounded={"xl"}
+                  rounded={"lg"}
+                  borderColor="text.400"
                   value={email}
                   bgColor="transparent"
-                  borderColor="#002B5B"
                   onChangeText={(text) => setEmail(text)}
                   InputLeftElement={
                     <Icon
@@ -152,10 +152,10 @@ const LoginPage = () => {
                 </Text>
                 <Input
                   type={show ? "text" : "password"}
-                  rounded={"xl"}
                   size={"2xl"}
                   bgColor="transparent"
-                  borderColor="#002B5B"
+                  rounded={"lg"}
+                  borderColor="text.400"
                   variant={"filled"}
                   value={password}
                   onChangeText={(text) => setPassword(text)}
@@ -201,7 +201,11 @@ const LoginPage = () => {
                 mt="2"
                 flex={1}
                 backgroundColor={"#002B5B"}
-                onPress={!loading ? handleLogin : null}
+                onPress={
+                  !loading && email.length > 0 && password.length > 0
+                    ? handleLogin
+                    : null
+                }
                 rounded={"md"}
               >
                 {loading ? "YÜKLENİYOR..." : "GİRİŞ YAP"}

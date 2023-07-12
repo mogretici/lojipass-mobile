@@ -189,9 +189,9 @@ const RegisterPage = () => {
                       <Input
                         size={"2xl"}
                         variant={"filled"}
-                        rounded={"xl"}
+                        rounded={"lg"}
                         bgColor="transparent"
-                        borderColor="#002B5B"
+                        borderColor="text.400"
                         onChangeText={handleChange("name")}
                         onBlur={handleBlur("name")}
                         value={values.name}
@@ -220,9 +220,9 @@ const RegisterPage = () => {
                       <Input
                         size={"2xl"}
                         variant={"filled"}
-                        rounded={"xl"}
+                        rounded={"lg"}
                         bgColor="transparent"
-                        borderColor="#002B5B"
+                        borderColor="text.400"
                         onChangeText={handleChange("surname")}
                         onBlur={handleBlur("surname")}
                         value={values.surname}
@@ -251,10 +251,10 @@ const RegisterPage = () => {
                       <Input
                         size={"2xl"}
                         variant={"filled"}
-                        rounded={"xl"}
+                        rounded={"lg"}
                         inputMode="numeric"
                         bgColor="transparent"
-                        borderColor="#002B5B"
+                        borderColor="text.400"
                         keyboardType="numeric"
                         maxLength={11}
                         onChangeText={handleChange("id")}
@@ -285,10 +285,11 @@ const RegisterPage = () => {
                       <Input
                         size={"2xl"}
                         variant={"filled"}
-                        rounded={"xl"}
+                        rounded={"lg"}
                         bgColor="transparent"
-                        borderColor="#002B5B"
+                        borderColor="text.400"
                         editable={false}
+                        onPressIn={showDatePicker}
                         onChangeText={handleChange("birthday")}
                         value={values.birthday}
                         InputLeftElement={
@@ -405,15 +406,15 @@ const RegisterPage = () => {
                       <Input
                         size={"2xl"}
                         variant={"filled"}
-                        rounded={"xl"}
+                        rounded={"lg"}
                         bgColor="transparent"
-                        borderColor="#002B5B"
+                        borderColor="text.400"
                         onChangeText={handleChange("email")}
                         onBlur={handleBlur("email")}
                         value={values.email}
                         InputLeftElement={
                           <Icon
-                            as={<MaterialIcons name="person" />}
+                            as={<MaterialIcons name="email" />}
                             size={5}
                             ml="2"
                             color="#002B5B"
@@ -435,11 +436,11 @@ const RegisterPage = () => {
                       ) : null}
                       <Input
                         type={showPass ? "text" : "password"}
-                        rounded={"xl"}
+                        rounded={"lg"}
                         size={"2xl"}
                         textContentType="oneTimeCode"
                         bgColor="transparent"
-                        borderColor="#002B5B"
+                        borderColor="text.400"
                         variant={"filled"}
                         onChangeText={handleChange("password")}
                         onBlur={handleBlur("password")}
@@ -484,10 +485,10 @@ const RegisterPage = () => {
                       ) : null}
                       <Input
                         type={showPass ? "text" : "password"}
-                        rounded={"xl"}
+                        rounded={"lg"}
                         size={"2xl"}
                         bgColor="transparent"
-                        borderColor="#002B5B"
+                        borderColor="text.400"
                         textContentType="oneTimeCode"
                         variant={"filled"}
                         onChangeText={handleChange("password2")}

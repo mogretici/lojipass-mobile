@@ -13,8 +13,10 @@ import {
   Badge,
   ScrollView,
   Pressable,
+  Divider,
 } from "native-base";
 import Header from "../../components/Header";
+import TicketView from "../../components/TicketView";
 
 const TripSelectionPage = () => {
   const { ticketRoute, createTicketDetail } = useUser();
@@ -44,9 +46,9 @@ const TripSelectionPage = () => {
             colorScheme="text"
             borderWidth={1}
             mx={"auto"}
-            mt={4}
+            mt={1}
             w={"90%"}
-            p={5}
+            p={4}
             opacity={0.4}
             shadow={2}
           >
@@ -72,72 +74,92 @@ const TripSelectionPage = () => {
                 }}
                 key={voyage.date + voyage.time}
               >
-                <VStack px={10} pt={5}>
+                <HStack justifyContent={"center"} px={6} pt={3}>
+                  <TicketView voyage={voyage} />
                   <Box
+                    flex={18}
+                    zIndex={-1}
                     borderColor={"#002B5B"}
                     borderWidth={1}
-                    borderRadius={14}
+                    borderRightRadius={10}
                     p={5}
                     backgroundColor={"#002B5B"}
                     opacity={0.9}
                     shadow={2}
                   >
-                    <VStack space={1}>
+                    <VStack space={4}>
                       <HStack justifyContent={"space-between"}>
                         <Text
                           color={"#ededed"}
-                          fontSize={18}
+                          fontSize={20}
                           fontFamily={"Play"}
                         >
                           {voyage.company} TURİZM
                         </Text>
-                        <VStack>
+                      </HStack>
+                      <VStack>
+                        <Text
+                          color={"#ededed"}
+                          fontSize={10}
+                          fontFamily={"Play"}
+                        >
+                          Güzergah:
+                        </Text>
+                        <HStack justifyContent={"flex-start"} space={1}>
                           <Text
-                            fontSize={14}
-                            fontFamily={"Play"}
                             color={"#ededed"}
+                            fontSize={12}
+                            fontFamily={"Play"}
                           >
-                            SAAT:
+                            {voyage.from}
                           </Text>
                           <Text
-                            fontSize={14}
-                            fontFamily={"Play"}
                             color={"#ededed"}
+                            fontSize={12}
+                            fontFamily={"Play"}
+                          >
+                            {">"}
+                          </Text>
+                          <Text
+                            color={"#ededed"}
+                            fontSize={12}
+                            fontFamily={"Play"}
+                          >
+                            {voyage.to}
+                          </Text>
+                        </HStack>
+                        <Text
+                          color={"#ededed"}
+                          fontSize={10}
+                          fontFamily={"Play"}
+                        >
+                          Tarih ve Saat:
+                        </Text>
+                        <HStack justifyContent={"flex-start"} space={1}>
+                          <Text
+                            color={"#ededed"}
+                            fontSize={12}
+                            fontFamily={"Play"}
+                          >
+                            {voyage.date}
+                          </Text>
+                          <Text
+                            color={"#ededed"}
+                            fontSize={12}
+                            fontFamily={"Play"}
                           >
                             {voyage.time}
                           </Text>
-                        </VStack>
-                      </HStack>
-                      <HStack justifyContent={"flex-start"} space={1}>
-                        <Text fontSize={10} color={"#ededed"}>
-                          Sefer Güzergah:
-                        </Text>
-                        <Text fontSize={10} color={"#ededed"}>
-                          {voyage.from}
-                        </Text>
-                        <Text fontSize={10} color={"#ededed"}>
-                          {">"}
-                        </Text>
-                        <Text fontSize={10} color={"#ededed"}>
-                          {voyage.to}
-                        </Text>
-                      </HStack>
-                      <HStack justifyContent={"flex-start"} space={1}>
-                        <Text fontSize={10} color={"#ededed"}>
-                          Sefer Tarih:
-                        </Text>
-                        <Text fontSize={10} color={"#ededed"}>
-                          {voyage.date}
-                        </Text>
-                      </HStack>
+                        </HStack>
+                      </VStack>
                       <HStack
                         alignItems={"flex-end"}
                         justifyContent={"space-between"}
                       >
                         <Text
-                          fontSize={14}
-                          fontFamily={"Play"}
                           color={"#ededed"}
+                          fontSize={18}
+                          fontFamily={"Play"}
                         >
                           {
                             voyage.fullSeats.filter(
@@ -146,26 +168,10 @@ const TripSelectionPage = () => {
                           }{" "}
                           UYGUN KOLTUK
                         </Text>
-                        <VStack alignItems={"center"}>
-                          <Text
-                            fontSize={14}
-                            fontFamily={"Play"}
-                            color={"#ededed"}
-                          >
-                            FİYAT:
-                          </Text>
-                          <Text
-                            fontSize={14}
-                            fontFamily={"Play"}
-                            color={"#ededed"}
-                          >
-                            {voyage.price} ₺
-                          </Text>
-                        </VStack>
                       </HStack>
                     </VStack>
                   </Box>
-                </VStack>
+                </HStack>
               </Pressable>
             ))}
           </ScrollView>

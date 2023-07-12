@@ -18,7 +18,7 @@ import {
 import { useUser } from "../../context/UserContext";
 import { router } from "expo-router";
 import cities from "../../assets/cities.json";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import ToastAlertBox from "../../components/ToastAlertBox";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
@@ -68,7 +68,7 @@ const TicketInquiryPage = () => {
           borderRadius={10}
           px={5}
         >
-          <VStack flex={1} space={5} justifyContent={"center"}>
+          <VStack flex={2} space={5} justifyContent={"center"}>
             <MaterialIcons name="location-pin" size={24} color="#002B5B" />
             <Box>
               <MaterialIcons name="more-vert" size={24} color="#002B5B" />
@@ -76,7 +76,7 @@ const TicketInquiryPage = () => {
             </Box>
             <MaterialIcons name="pin-drop" size={24} color="#002B5B" />
           </VStack>
-          <VStack w={"90%"} flex={10} space={5} p={5}>
+          <VStack w={"90%"} flex={10} space={4} p={5}>
             <Box flex={2}>
               <Text>Nereden?</Text>
               <Select
@@ -87,7 +87,8 @@ const TicketInquiryPage = () => {
                 borderColor={"#002B5B"}
                 placeholder="Bulunduğunuz Şehir"
                 _selectedItem={{
-                  bg: "#FFF5DA",
+                  bg: "text.500",
+
                   endIcon: <CheckIcon size="5" />,
                 }}
                 mt={1}
@@ -98,7 +99,7 @@ const TicketInquiryPage = () => {
                 })}
               </Select>
             </Box>
-            <Divider bgColor={"text.500"} w={"190"} />
+            <Divider bgColor={"text.500"} w={"170"} />
             <Box flex={2}>
               <Text>Nereye?</Text>
               <Select
@@ -109,7 +110,8 @@ const TicketInquiryPage = () => {
                 borderColor={"#002B5B"}
                 placeholder="Gideceğiniz Şehir"
                 _selectedItem={{
-                  bg: "#FFF5DA",
+                  bg: "text.500",
+
                   endIcon: <CheckIcon size="5" />,
                 }}
                 mt={1}
@@ -141,25 +143,26 @@ const TicketInquiryPage = () => {
           borderWidth={0.5}
           borderRadius={10}
           px={"5"}
+          space={2}
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <Text>Sefer Tarihi:</Text>
           <MaterialIcons
             name="date-range"
             onPress={showDatePicker}
             size={24}
             color="#002B5B"
           />
+          <Text>Sefer Tarihi:</Text>
           <Input
-            w={"50%"}
-            variant={"unstyled"}
+            w={"70%"}
+            variant={"outline"}
             _focus={{
               borderColor: "#002B5B",
             }}
-            value={date ? date : "Tarih Seçiniz"}
+            value={date ? date : "Tarih Seçmek İçin Dokunun"}
             isDisabled
-            onFocus={showDatePicker}
+            onPressIn={showDatePicker}
           />
 
           <DateTimePickerModal
