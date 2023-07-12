@@ -1,8 +1,18 @@
-import { Text, HStack, VStack, Input, Button, Box, Badge } from "native-base";
+import {
+  Text,
+  HStack,
+  VStack,
+  Input,
+  Button,
+  Box,
+  Badge,
+  useToast,
+} from "native-base";
 import { Fontisto } from "@expo/vector-icons";
-
+import Lottie from "lottie-react-native";
 import { useUser } from "../../context/UserContext.js";
 import React, { useState } from "react";
+import ToastAlertBox from "../../components/ToastAlertBox";
 import Header from "../../components/Header.js";
 import CreditCardUI from "rn-credit-card-ui";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -10,6 +20,8 @@ import { router } from "expo-router";
 
 const PaymentPage = () => {
   const { ticket } = useUser();
+  const toast = useToast();
+  const [loading, setLoading] = useState(false);
   let currentYear = new Date().getFullYear();
   const [creditInfo, setCreditInfo] = useState({
     cardNumber: "",
@@ -47,10 +59,29 @@ const PaymentPage = () => {
   const handlePayment = () => {
     console.log(creditInfo);
     console.log(ticket);
-    router.push("/TicketPage");
+    !cardNumber || !cvc || !holderName || !expiryDate
+      ? toast.show({
+          render: () => {
+            return (
+              <ToastAlertBox description={"LÜTFEN TÜM ALANLARI DOLDURUNUZ !"} />
+            );
+          },
+        })
+      : (setLoading(true),
+        setTimeout(() => {
+          setLoading(false);
+          router.push("/TicketPage");
+        }, 2000));
   };
 
-  return (
+  return loading ? (
+    <Lottie
+      resizeMode="contain"
+      source={require("../../assets/ticket.json")}
+      autoPlay
+      loop
+    />
+  ) : (
     <>
       <Header title={"ÖDEME YAP"} back={true} />
       <KeyboardAwareScrollView

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "../../context/UserContext";
 import voyages from "../../assets/voyages.json";
 import { useRouter, useLocalSearchParams } from "expo-router";
-
+import Lottie from "lottie-react-native";
 import {
   HStack,
   VStack,
@@ -173,7 +173,7 @@ const TripSelectionPage = () => {
           </ScrollView>
         </>
       ) : (
-        <Center h={"80%"} gap={10}>
+        <Center h={"80%"}>
           <Badge
             variant={"subtle"}
             colorScheme="text"
@@ -189,7 +189,14 @@ const TripSelectionPage = () => {
               Seçtiğiniz güzergah ve saatte sefer bulunmamaktadır.
             </Text>
           </Badge>
-          <MaterialIcons color={"#002B5B"} name="no-transfer" size={150} />
+          <Box w={"100%"} h={"50%"} mt={30}>
+            <Lottie
+              resizeMode="cover"
+              source={require("../../assets/animation.json")}
+              autoPlay
+              loop
+            />
+          </Box>
         </Center>
       )}
     </View>

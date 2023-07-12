@@ -19,30 +19,22 @@ import { LoginUser } from "../../API.js";
 import React, { useState } from "react";
 import { useUser } from "../../context/UserContext.js";
 import ToastAlertBox from "../../components/ToastAlertBox";
+import Lottie from "lottie-react-native";
 
 const LoginPage = () => {
   const params = useLocalSearchParams();
-  const { resEmail } = params;
+  const { resEmail, resPass } = params;
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState(resEmail ? resEmail : "a@a.com");
-  const [password, setPassword] = useState(resEmail ? "" : "111111");
+  const [email, setEmail] = useState(
+    resEmail ? resEmail : "testuser@lojipass.com"
+  );
+  const [password, setPassword] = useState(resPass ? resPass : "111111");
   const toast = useToast();
   const router = useRouter();
-  const { setUserInformation } = useUser();
+  const { setUserInformation, cacheUser } = useUser();
 
   const handleLogin = async () => {
-    toast.show({
-      duration: null,
-      render: () => {
-        return (
-          <ToastAlertBox
-            description={"GİRİŞ YAPILIYOR LÜTFEN BEKLEYİN..."}
-            status={"success"}
-          />
-        );
-      },
-    });
     setLoading(true);
     const input = {
       email: email,
@@ -54,6 +46,11 @@ const LoginPage = () => {
         toast.closeAll(), setLoading(false);
         res.token
           ? (setUserInformation(res), router.replace("/TicketInquiryPage"))
+          : cacheUser &&
+            input.email === cacheUser.email &&
+            input.password === cacheUser.password // sunucu sorunlarına karşı cache'den giriş yapma
+          ? (setUserInformation(cacheUser),
+            router.replace("/TicketInquiryPage"))
           : toast.show({
               render: () => {
                 return <ToastAlertBox description={"GİRİŞ BAŞARISIZ..."} />;
@@ -63,15 +60,20 @@ const LoginPage = () => {
       .catch((err) => {
         setLoading(false);
         toast.closeAll();
-        toast.show({
-          render: () => {
-            return (
-              <ToastAlertBox
-                description={`GİRİŞ BAŞARISIZ: ${err.response.data}`}
-              />
-            );
-          },
-        });
+        cacheUser &&
+        input.email === cacheUser.email &&
+        input.password === cacheUser.password // sunucu sorunlarına karşı cache'den giriş yapma
+          ? (setUserInformation(cacheUser),
+            router.replace("/TicketInquiryPage"))
+          : toast.show({
+              render: () => {
+                return (
+                  <ToastAlertBox
+                    description={`GİRİŞ BAŞARISIZ: ${err.response.data}`}
+                  />
+                );
+              },
+            });
       });
   };
 
@@ -208,6 +210,16 @@ const LoginPage = () => {
               </Button>
             </HStack>
           </Box>
+          {loading && (
+            <Box h={"50%"} w={"100%"} position={"absolute"} bottom={-70}>
+              <Lottie
+                resizeMode="contain"
+                source={require("../../assets/animation.json")}
+                autoPlay
+                loop
+              />
+            </Box>
+          )}
         </Center>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>

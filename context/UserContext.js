@@ -15,10 +15,15 @@ const UserProvider = ({ children }) => {
   const [ticketRoute, setTicketRoute] = useState();
   const [ticketDetail, setTicketDetail] = useState();
   const [ticket, setTicket] = useState();
+  const [cacheUser, setCacheUser] = useState();
 
   const setUserInformation = (user) => {
     setToken(user.token);
     setUser(user.user);
+  };
+
+  const createCacheUser = (user) => {
+    setCacheUser(user);
   };
 
   const createTicketRoute = ({ from, to, date }) => {
@@ -38,11 +43,13 @@ const UserProvider = ({ children }) => {
 
   const values = {
     user,
+    cacheUser,
     token,
     ticket,
     ticketRoute,
     ticketDetail,
     setUserInformation,
+    createCacheUser,
     createTicketRoute,
     createTicketDetail,
     createFullTicket,
