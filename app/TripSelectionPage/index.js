@@ -2,7 +2,7 @@ import { View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../context/UserContext";
 import voyages from "../../assets/voyages.json";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { useRouter } from "expo-router";
 import Lottie from "lottie-react-native";
 import {
   HStack,
@@ -12,11 +12,9 @@ import {
   Center,
   Badge,
   ScrollView,
-  Divider,
   Pressable,
 } from "native-base";
 import Header from "../../components/Header";
-import { MaterialIcons } from "@expo/vector-icons";
 
 const TripSelectionPage = () => {
   const { ticketRoute, createTicketDetail } = useUser();

@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import { useCallback } from "react";
 import React from "react";
 import LoginPage from "./LoginPage";
@@ -8,7 +7,6 @@ import {
   RobotoMono_400Regular,
 } from "@expo-google-fonts/roboto-mono";
 import * as SplashScreen from "expo-splash-screen";
-import TicketInquiryPage from "./TicketInquiryPage";
 
 const Home = () => {
   const [fontsLoaded] = useFonts({

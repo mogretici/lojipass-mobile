@@ -1,6 +1,6 @@
 import { Text, HStack, VStack, Heading, Box, Badge, Button } from "native-base";
 import { useUser } from "../../context/UserContext.js";
-import React, { useState } from "react";
+import React from "react";
 import Header from "../../components/Header.js";
 import ZigzagView from "react-native-zigzag-view";
 import { useRouter } from "expo-router";
@@ -11,7 +11,7 @@ const TicketPage = () => {
   return (
     <>
       <Header title={"BİLET DETAY "} home={true} logout={true} />
-      <Box py={4} px={12}>
+      <Box py={6} px={12}>
         <ZigzagView
           backgroundColor={"transparent"}
           surfaceColor={"#ededed"}
@@ -94,7 +94,8 @@ const TicketPage = () => {
             borderTopWidth={0}
             borderBottomWidth={0}
             justifyContent={"space-between"}
-            p={8}
+            py={6}
+            px={3}
           >
             <VStack space={1}>
               <HStack justifyContent={"space-between"} alignItems={"center"}>
@@ -132,7 +133,7 @@ const TicketPage = () => {
             </VStack>
           </Box>
         </ZigzagView>
-        <VStack space={3} pt={3}>
+        <VStack space={3} pt={8}>
           <VStack alignItems={"center"}>
             <Text>Biletiniz başarıyla oluşturuldu.</Text>
             <Text>LOJIPASS 'i seçtiğiniz için teşekkürler..</Text>

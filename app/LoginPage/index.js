@@ -26,10 +26,8 @@ const LoginPage = () => {
   const { resEmail, resPass } = params;
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState(
-    resEmail ? resEmail : "testuser@lojipass.com"
-  );
-  const [password, setPassword] = useState(resPass ? resPass : "111111");
+  const [email, setEmail] = useState(resEmail ? resEmail : "");
+  const [password, setPassword] = useState(resPass ? resPass : "");
   const toast = useToast();
   const router = useRouter();
   const { setUserInformation, cacheUser } = useUser();

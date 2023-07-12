@@ -25,9 +25,9 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 const TicketInquiryPage = () => {
   const { user, createTicketRoute } = useUser();
   const toast = useToast();
-  const [fromCity, setFromCity] = useState("ÇANAKKALE");
-  const [toCity, setToCity] = useState("İSTANBUL");
-  const [date, setDate] = useState("25.07.2023");
+  const [fromCity, setFromCity] = useState("");
+  const [toCity, setToCity] = useState("");
+  const [date, setDate] = useState("");
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [allCities, setAllCities] = useState([]);
 

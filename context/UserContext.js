@@ -4,12 +4,12 @@ const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState({
-    _id: "64a9a15a1cfbf4fb46e6c170",
-    dateOfBirth: "24.03.1996",
-    email: "a@a.com",
-    identificationNumber: "36736256325",
-    name: "Lütfü Öğretici",
-    sex: "Erkek",
+    _id: "",
+    dateOfBirth: "",
+    email: "",
+    identificationNumber: "",
+    name: "",
+    sex: "",
   });
   const [token, setToken] = useState();
   const [ticketRoute, setTicketRoute] = useState();
