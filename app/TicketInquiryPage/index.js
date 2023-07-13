@@ -155,14 +155,22 @@ const TicketInquiryPage = () => {
           />
           <Text>Sefer Tarihi:</Text>
           <Input
-            w={"70%"}
+            w={"50%"}
             variant={"outline"}
             _focus={{
               borderColor: "#002B5B",
             }}
-            value={date ? date : "Tarih Seçmek İçin Dokunun"}
+            value={date ? date : "Tarih Seçiniz"}
             isDisabled
             onPressIn={showDatePicker}
+            InputRightElement={
+              <MaterialIcons
+                name="date-range"
+                onPress={showDatePicker}
+                size={24}
+                color="#002B5B"
+              />
+            }
           />
 
           <DateTimePickerModal
