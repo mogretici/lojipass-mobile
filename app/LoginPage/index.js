@@ -33,6 +33,16 @@ const LoginPage = () => {
   const { setUserInformation, cacheUser } = useUser();
 
   const handleLogin = async () => {
+    toast.show({
+      render: () => {
+        return (
+          <ToastAlertBox
+            description={"GİRİŞ YAPILIYOR LÜTFEN BEKLEYİN.."}
+            status={"success"}
+          />
+        );
+      },
+    });
     setLoading(true);
     const input = {
       email: email,
@@ -211,7 +221,7 @@ const LoginPage = () => {
               </Button>
             </HStack>
           </Box>
-          {loading && (
+          {/* {loading && (
             <Box h={"50%"} w={"100%"} position={"absolute"} bottom={-70}>
               <Lottie
                 resizeMode="contain"
@@ -220,7 +230,7 @@ const LoginPage = () => {
                 loop
               />
             </Box>
-          )}
+          )} */}
         </Center>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>

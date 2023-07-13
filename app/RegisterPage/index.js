@@ -84,468 +84,468 @@ const RegisterPage = () => {
           showsVerticalScrollIndicator={false}
         >
           <Center w="100%" h={"full"}>
-            {loading ? (
+            {/* {loading ? (
               <Lottie
                 resizeMode="contain"
                 source={require("../../assets/animation.json")}
                 autoPlay
                 loop
               />
-            ) : (
-              <Box safeArea px="2" pb="8" w="80%" maxW="290">
-                <Formik
-                  initialValues={{
-                    name: "",
-                    surname: "",
-                    id: "",
-                    birthday: "",
-                    email: "",
-                    password: "",
-                    password2: "",
-                    gender: "",
-                  }}
-                  validationSchema={RegisterSchema}
-                  onSubmit={async (values) => {
-                    setLoading(true);
-                    toast.show({
-                      render: () => {
-                        return (
-                          <ToastAlertBox
-                            status={"success"}
-                            description={
-                              "KAYIT İŞLEMİ YAPILIYOR. LÜTFEN BEKLEYİNİZ.."
-                            }
-                          />
-                        );
-                      },
-                    });
-                    let data = {
-                      name: values.name + " " + values.surname,
-                      identificationNumber: values.id,
-                      dateOfBirth: birthday,
-                      email: values.email,
-                      sex: values.gender,
-                      password: values.password,
-                    };
-                    createCacheUser(data);
-                    await RegisterUser(data)
-                      .then((res) => {
-                        res._id
-                          ? (toast.show({
-                              render: () => {
-                                return (
-                                  <ToastAlertBox
-                                    status={"success"}
-                                    description={"KAYIT BAŞARILI!"}
-                                  />
-                                );
-                              },
-                            }),
-                            setTimeout(() => {
-                              setLoading(false);
-                              router.push({
-                                pathname: "/LoginPage",
-                                params: {
-                                  resEmail: values.email,
-                                  resPass: values.password,
-                                },
-                              });
-                            }, 3000))
-                          : (setLoading(false),
-                            toast.show({
-                              render: () => {
-                                return (
-                                  <ToastAlertBox
-                                    description={"KAYIT BAŞARISIZ !"}
-                                  />
-                                );
-                              },
-                            }));
-                      })
-                      .catch((err) => {
-                        setLoading(false);
-                        toast.show({
-                          render: () => {
-                            return (
-                              <ToastAlertBox
-                                description={`KAYIT BAŞARISIZ: ${err.response.data}`}
-                              />
-                            );
-                          },
-                        });
-                      });
-                  }}
-                >
-                  {({
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                    values,
-                    errors,
-                    touched,
-                  }) => (
-                    <VStack space={4} mt="5">
-                      <Input
-                        size={"2xl"}
-                        variant={"filled"}
-                        rounded={"lg"}
-                        bgColor="transparent"
-                        borderColor="text.400"
-                        onChangeText={handleChange("name")}
-                        onBlur={handleBlur("name")}
-                        value={values.name}
-                        InputLeftElement={
-                          <Icon
-                            as={<MaterialIcons name="person" />}
-                            size={5}
-                            ml="2"
-                            color="#002B5B"
-                          />
-                        }
-                        placeholder="Ad"
-                      />
-                      {errors.name && touched.name ? (
-                        <HStack
-                          justifyContent={"flex-end"}
-                          alignItems={"center"}
-                          mt={-3}
-                          mr={2}
-                          mb={-2}
-                        >
-                          <MaterialIcons name="error" color={"red"} />
-                          <Text color={"red.500"}> {errors.name}</Text>
-                        </HStack>
-                      ) : null}
-                      <Input
-                        size={"2xl"}
-                        variant={"filled"}
-                        rounded={"lg"}
-                        bgColor="transparent"
-                        borderColor="text.400"
-                        onChangeText={handleChange("surname")}
-                        onBlur={handleBlur("surname")}
-                        value={values.surname}
-                        InputLeftElement={
-                          <Icon
-                            as={<MaterialIcons name="person" />}
-                            size={5}
-                            ml="2"
-                            color="#002B5B"
-                          />
-                        }
-                        placeholder="Soyad"
-                      />
-                      {errors.surname && touched.surname ? (
-                        <HStack
-                          justifyContent={"flex-end"}
-                          alignItems={"center"}
-                          mt={-3}
-                          mr={2}
-                          mb={-2}
-                        >
-                          <MaterialIcons name="error" color={"red"} />
-                          <Text color={"red.500"}> {errors.surname}</Text>
-                        </HStack>
-                      ) : null}
-                      <Input
-                        size={"2xl"}
-                        variant={"filled"}
-                        rounded={"lg"}
-                        inputMode="numeric"
-                        bgColor="transparent"
-                        borderColor="text.400"
-                        keyboardType="numeric"
-                        maxLength={11}
-                        onChangeText={handleChange("id")}
-                        onBlur={handleBlur("id")}
-                        value={values.id}
-                        InputLeftElement={
-                          <Icon
-                            as={<MaterialIcons name="fingerprint" />}
-                            size={5}
-                            ml="2"
-                            color="#002B5B"
-                          />
-                        }
-                        placeholder="Kimlik Numarası"
-                      />
-                      {errors.id && touched.id ? (
-                        <HStack
-                          justifyContent={"flex-end"}
-                          alignItems={"center"}
-                          mt={-3}
-                          mr={2}
-                          mb={-2}
-                        >
-                          <MaterialIcons name="error" color={"red"} />
-                          <Text color={"red.500"}> {errors.id}</Text>
-                        </HStack>
-                      ) : null}
-                      <Input
-                        size={"2xl"}
-                        variant={"filled"}
-                        rounded={"lg"}
-                        bgColor="transparent"
-                        borderColor="text.400"
-                        editable={false}
-                        onPressIn={showDatePicker}
-                        onChangeText={handleChange("birthday")}
-                        value={values.birthday}
-                        InputLeftElement={
-                          <Icon
-                            as={<MaterialIcons name="cake" />}
-                            size={5}
-                            ml="2"
-                            color="#002B5B"
-                          />
-                        }
-                        placeholder="Doğum Tarihi"
-                        InputRightElement={
-                          <Pressable onPress={showDatePicker}>
-                            <Icon
-                              as={<MaterialIcons name={"date-range"} />}
-                              size={6}
-                              mr="2"
-                              color="#002B5B"
-                            />
-                          </Pressable>
-                        }
-                      />
-                      {errors.birthday && touched.birthday && !birthday ? (
-                        <HStack
-                          justifyContent={"flex-end"}
-                          alignItems={"center"}
-                          mt={-3}
-                          mr={2}
-                          mb={-2}
-                        >
-                          <MaterialIcons name="error" color={"red"} />
-                          <Text color={"red.500"}> {errors.birthday}</Text>
-                        </HStack>
-                      ) : null}
-                      <DateTimePickerModal
-                        isVisible={isDatePickerVisible}
-                        mode="date"
-                        locale="tr_TR"
-                        date={new Date(946684800000)}
-                        onConfirm={(e) => {
-                          handleConfirm(e);
-                          values.birthday = e.toLocaleDateString();
-                          handleChange("birthday");
-                        }}
-                        onCancel={() => {
-                          handleBlur("birthday");
-                          hideDatePicker();
-                        }}
-                      />
-                      <HStack
-                        alignItems={{
-                          base: "center",
-                          md: "center",
-                        }}
-                        space={3}
-                        maxW="300px"
-                      >
-                        <MaterialCommunityIcons
-                          name="gender-male-female"
-                          size={24}
-                          color={"#002B5B"}
+            ) : ( */}
+            <Box safeArea px="2" pb="8" w="80%" maxW="290">
+              <Formik
+                initialValues={{
+                  name: "",
+                  surname: "",
+                  id: "",
+                  birthday: "",
+                  email: "",
+                  password: "",
+                  password2: "",
+                  gender: "",
+                }}
+                validationSchema={RegisterSchema}
+                onSubmit={async (values) => {
+                  setLoading(true);
+                  toast.show({
+                    render: () => {
+                      return (
+                        <ToastAlertBox
+                          status={"success"}
+                          description={
+                            "KAYIT İŞLEMİ YAPILIYOR. LÜTFEN BEKLEYİNİZ.."
+                          }
                         />
-                        <Text fontSize="lg" color={"muted.400"}>
-                          Cinsiyet:
-                        </Text>
-                        <Radio.Group
-                          name="gender"
-                          onChange={handleChange("gender")}
-                          onBlur={handleBlur("gender")}
-                          value={values.gender}
+                      );
+                    },
+                  });
+                  let data = {
+                    name: values.name + " " + values.surname,
+                    identificationNumber: values.id,
+                    dateOfBirth: birthday,
+                    email: values.email,
+                    sex: values.gender,
+                    password: values.password,
+                  };
+                  createCacheUser(data);
+                  await RegisterUser(data)
+                    .then((res) => {
+                      res._id
+                        ? (toast.show({
+                            render: () => {
+                              return (
+                                <ToastAlertBox
+                                  status={"success"}
+                                  description={"KAYIT BAŞARILI!"}
+                                />
+                              );
+                            },
+                          }),
+                          setTimeout(() => {
+                            setLoading(false);
+                            router.push({
+                              pathname: "/LoginPage",
+                              params: {
+                                resEmail: values.email,
+                                resPass: values.password,
+                              },
+                            });
+                          }, 3000))
+                        : (setLoading(false),
+                          toast.show({
+                            render: () => {
+                              return (
+                                <ToastAlertBox
+                                  description={"KAYIT BAŞARISIZ !"}
+                                />
+                              );
+                            },
+                          }));
+                    })
+                    .catch((err) => {
+                      setLoading(false);
+                      toast.show({
+                        render: () => {
+                          return (
+                            <ToastAlertBox
+                              description={`KAYIT BAŞARISIZ: ${err.response.data}`}
+                            />
+                          );
+                        },
+                      });
+                    });
+                }}
+              >
+                {({
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                  values,
+                  errors,
+                  touched,
+                }) => (
+                  <VStack space={4} mt="5">
+                    <Input
+                      size={"2xl"}
+                      variant={"filled"}
+                      rounded={"lg"}
+                      bgColor="transparent"
+                      borderColor="text.400"
+                      onChangeText={handleChange("name")}
+                      onBlur={handleBlur("name")}
+                      value={values.name}
+                      InputLeftElement={
+                        <Icon
+                          as={<MaterialIcons name="person" />}
+                          size={5}
+                          ml="2"
+                          color="#002B5B"
+                        />
+                      }
+                      placeholder="Ad"
+                    />
+                    {errors.name && touched.name ? (
+                      <HStack
+                        justifyContent={"flex-end"}
+                        alignItems={"center"}
+                        mt={-3}
+                        mr={2}
+                        mb={-2}
+                      >
+                        <MaterialIcons name="error" color={"red"} />
+                        <Text color={"red.500"}> {errors.name}</Text>
+                      </HStack>
+                    ) : null}
+                    <Input
+                      size={"2xl"}
+                      variant={"filled"}
+                      rounded={"lg"}
+                      bgColor="transparent"
+                      borderColor="text.400"
+                      onChangeText={handleChange("surname")}
+                      onBlur={handleBlur("surname")}
+                      value={values.surname}
+                      InputLeftElement={
+                        <Icon
+                          as={<MaterialIcons name="person" />}
+                          size={5}
+                          ml="2"
+                          color="#002B5B"
+                        />
+                      }
+                      placeholder="Soyad"
+                    />
+                    {errors.surname && touched.surname ? (
+                      <HStack
+                        justifyContent={"flex-end"}
+                        alignItems={"center"}
+                        mt={-3}
+                        mr={2}
+                        mb={-2}
+                      >
+                        <MaterialIcons name="error" color={"red"} />
+                        <Text color={"red.500"}> {errors.surname}</Text>
+                      </HStack>
+                    ) : null}
+                    <Input
+                      size={"2xl"}
+                      variant={"filled"}
+                      rounded={"lg"}
+                      inputMode="numeric"
+                      bgColor="transparent"
+                      borderColor="text.400"
+                      keyboardType="numeric"
+                      maxLength={11}
+                      onChangeText={handleChange("id")}
+                      onBlur={handleBlur("id")}
+                      value={values.id}
+                      InputLeftElement={
+                        <Icon
+                          as={<MaterialIcons name="fingerprint" />}
+                          size={5}
+                          ml="2"
+                          color="#002B5B"
+                        />
+                      }
+                      placeholder="Kimlik Numarası"
+                    />
+                    {errors.id && touched.id ? (
+                      <HStack
+                        justifyContent={"flex-end"}
+                        alignItems={"center"}
+                        mt={-3}
+                        mr={2}
+                        mb={-2}
+                      >
+                        <MaterialIcons name="error" color={"red"} />
+                        <Text color={"red.500"}> {errors.id}</Text>
+                      </HStack>
+                    ) : null}
+                    <Input
+                      size={"2xl"}
+                      variant={"filled"}
+                      rounded={"lg"}
+                      bgColor="transparent"
+                      borderColor="text.400"
+                      editable={false}
+                      onPressIn={showDatePicker}
+                      onChangeText={handleChange("birthday")}
+                      value={values.birthday}
+                      InputLeftElement={
+                        <Icon
+                          as={<MaterialIcons name="cake" />}
+                          size={5}
+                          ml="2"
+                          color="#002B5B"
+                        />
+                      }
+                      placeholder="Doğum Tarihi"
+                      InputRightElement={
+                        <Pressable onPress={showDatePicker}>
+                          <Icon
+                            as={<MaterialIcons name={"date-range"} />}
+                            size={6}
+                            mr="2"
+                            color="#002B5B"
+                          />
+                        </Pressable>
+                      }
+                    />
+                    {errors.birthday && touched.birthday && !birthday ? (
+                      <HStack
+                        justifyContent={"flex-end"}
+                        alignItems={"center"}
+                        mt={-3}
+                        mr={2}
+                        mb={-2}
+                      >
+                        <MaterialIcons name="error" color={"red"} />
+                        <Text color={"red.500"}> {errors.birthday}</Text>
+                      </HStack>
+                    ) : null}
+                    <DateTimePickerModal
+                      isVisible={isDatePickerVisible}
+                      mode="date"
+                      locale="tr_TR"
+                      date={new Date(946684800000)}
+                      onConfirm={(e) => {
+                        handleConfirm(e);
+                        values.birthday = e.toLocaleDateString();
+                        handleChange("birthday");
+                      }}
+                      onCancel={() => {
+                        handleBlur("birthday");
+                        hideDatePicker();
+                      }}
+                    />
+                    <HStack
+                      alignItems={{
+                        base: "center",
+                        md: "center",
+                      }}
+                      space={3}
+                      maxW="300px"
+                    >
+                      <MaterialCommunityIcons
+                        name="gender-male-female"
+                        size={24}
+                        color={"#002B5B"}
+                      />
+                      <Text fontSize="lg" color={"muted.400"}>
+                        Cinsiyet:
+                      </Text>
+                      <Radio.Group
+                        name="gender"
+                        onChange={handleChange("gender")}
+                        onBlur={handleBlur("gender")}
+                        value={values.gender}
+                      >
+                        <HStack
+                          alignItems={{
+                            base: "center",
+                            md: "center",
+                          }}
+                          space={3}
                         >
-                          <HStack
-                            alignItems={{
-                              base: "center",
-                              md: "center",
-                            }}
-                            space={3}
+                          <Radio
+                            value="Kadın"
+                            colorScheme="black"
+                            size="md"
+                            my={1}
                           >
-                            <Radio
-                              value="Kadın"
-                              colorScheme="black"
-                              size="md"
-                              my={1}
-                            >
-                              <Text fontSize="lg" color={"#002B5B"}>
-                                Kadın
-                              </Text>
-                            </Radio>
-                            <Radio
-                              value="Erkek"
-                              colorScheme="black"
-                              size="md"
-                              my={1}
-                            >
-                              <Text fontSize="lg" color={"#002B5B"}>
-                                Erkek
-                              </Text>
-                            </Radio>
-                          </HStack>
-                        </Radio.Group>
+                            <Text fontSize="lg" color={"#002B5B"}>
+                              Kadın
+                            </Text>
+                          </Radio>
+                          <Radio
+                            value="Erkek"
+                            colorScheme="black"
+                            size="md"
+                            my={1}
+                          >
+                            <Text fontSize="lg" color={"#002B5B"}>
+                              Erkek
+                            </Text>
+                          </Radio>
+                        </HStack>
+                      </Radio.Group>
+                    </HStack>
+                    {errors.gender && touched.gender ? (
+                      <HStack
+                        justifyContent={"flex-end"}
+                        alignItems={"center"}
+                        mt={-3}
+                        mr={2}
+                        mb={-2}
+                      >
+                        <MaterialIcons name="error" color={"red"} />
+                        <Text color={"red.500"}> {errors.gender}</Text>
                       </HStack>
-                      {errors.gender && touched.gender ? (
-                        <HStack
-                          justifyContent={"flex-end"}
-                          alignItems={"center"}
-                          mt={-3}
-                          mr={2}
-                          mb={-2}
-                        >
-                          <MaterialIcons name="error" color={"red"} />
-                          <Text color={"red.500"}> {errors.gender}</Text>
-                        </HStack>
-                      ) : null}
-                      <Input
-                        size={"2xl"}
-                        variant={"filled"}
-                        rounded={"lg"}
-                        bgColor="transparent"
-                        borderColor="text.400"
-                        onChangeText={handleChange("email")}
-                        onBlur={handleBlur("email")}
-                        value={values.email}
-                        InputLeftElement={
-                          <Icon
-                            as={<MaterialIcons name="email" />}
-                            size={5}
-                            ml="2"
-                            color="#002B5B"
-                          />
-                        }
-                        placeholder="E-Posta"
-                      />
-                      {errors.email && touched.email ? (
-                        <HStack
-                          justifyContent={"flex-end"}
-                          alignItems={"center"}
-                          mt={-3}
-                          mr={2}
-                          mb={-2}
-                        >
-                          <MaterialIcons name="error" color={"red"} />
-                          <Text color={"red.500"}> {errors.email}</Text>
-                        </HStack>
-                      ) : null}
-                      <Input
-                        type={showPass ? "text" : "password"}
-                        rounded={"lg"}
-                        size={"2xl"}
-                        textContentType="oneTimeCode"
-                        bgColor="transparent"
-                        borderColor="text.400"
-                        variant={"filled"}
-                        onChangeText={handleChange("password")}
-                        onBlur={handleBlur("password")}
-                        value={values.password}
-                        InputLeftElement={
-                          <Icon
-                            as={<MaterialIcons name="lock" />}
-                            size={5}
-                            ml="2"
-                            color="#002B5B"
-                          />
-                        }
-                        InputRightElement={
-                          <Pressable onPress={() => setShowPass(!showPass)}>
-                            <Icon
-                              as={
-                                <MaterialIcons
-                                  name={
-                                    showPass ? "visibility" : "visibility-off"
-                                  }
-                                />
-                              }
-                              size={5}
-                              mr="2"
-                              color="#002B5B"
-                            />
-                          </Pressable>
-                        }
-                        placeholder="Şifre"
-                      />
-                      {errors.password && touched.password ? (
-                        <HStack
-                          justifyContent={"flex-end"}
-                          alignItems={"center"}
-                          mt={-3}
-                          mr={2}
-                          mb={-2}
-                        >
-                          <MaterialIcons name="error" color={"red"} />
-                          <Text color={"red.500"}> {errors.password}</Text>
-                        </HStack>
-                      ) : null}
-                      <Input
-                        type={showPass ? "text" : "password"}
-                        rounded={"lg"}
-                        size={"2xl"}
-                        bgColor="transparent"
-                        borderColor="text.400"
-                        textContentType="oneTimeCode"
-                        variant={"filled"}
-                        onChangeText={handleChange("password2")}
-                        onBlur={handleBlur("password2")}
-                        value={values.password2}
-                        InputLeftElement={
-                          <Icon
-                            as={<MaterialIcons name="lock" />}
-                            size={5}
-                            ml="2"
-                            color="#002B5B"
-                          />
-                        }
-                        InputRightElement={
-                          <Pressable onPress={() => setShowPass(!showPass)}>
-                            <Icon
-                              as={
-                                <MaterialIcons
-                                  name={
-                                    showPass ? "visibility" : "visibility-off"
-                                  }
-                                />
-                              }
-                              size={5}
-                              mr="2"
-                              color="#002B5B"
-                            />
-                          </Pressable>
-                        }
-                        placeholder="Şifre Tekrar"
-                      />
-                      {errors.password2 && touched.password2 ? (
-                        <HStack
-                          justifyContent={"flex-end"}
-                          alignItems={"center"}
-                          mt={-3}
-                          mr={2}
-                          mb={-2}
-                        >
-                          <MaterialIcons name="error" color={"red"} />
-                          <Text color={"red.500"}> {errors.password2}</Text>
-                        </HStack>
-                      ) : null}
-                      <HStack justifyContent="flex-end" width="100%" px={2}>
-                        <Button
-                          mt="2"
-                          backgroundColor={"#002B5B"}
-                          onPress={handleSubmit}
-                          w={"50%"}
-                        >
-                          KAYIT OL
-                        </Button>
+                    ) : null}
+                    <Input
+                      size={"2xl"}
+                      variant={"filled"}
+                      rounded={"lg"}
+                      bgColor="transparent"
+                      borderColor="text.400"
+                      onChangeText={handleChange("email")}
+                      onBlur={handleBlur("email")}
+                      value={values.email}
+                      InputLeftElement={
+                        <Icon
+                          as={<MaterialIcons name="email" />}
+                          size={5}
+                          ml="2"
+                          color="#002B5B"
+                        />
+                      }
+                      placeholder="E-Posta"
+                    />
+                    {errors.email && touched.email ? (
+                      <HStack
+                        justifyContent={"flex-end"}
+                        alignItems={"center"}
+                        mt={-3}
+                        mr={2}
+                        mb={-2}
+                      >
+                        <MaterialIcons name="error" color={"red"} />
+                        <Text color={"red.500"}> {errors.email}</Text>
                       </HStack>
-                    </VStack>
-                  )}
-                </Formik>
-              </Box>
-            )}
+                    ) : null}
+                    <Input
+                      type={showPass ? "text" : "password"}
+                      rounded={"lg"}
+                      size={"2xl"}
+                      textContentType="oneTimeCode"
+                      bgColor="transparent"
+                      borderColor="text.400"
+                      variant={"filled"}
+                      onChangeText={handleChange("password")}
+                      onBlur={handleBlur("password")}
+                      value={values.password}
+                      InputLeftElement={
+                        <Icon
+                          as={<MaterialIcons name="lock" />}
+                          size={5}
+                          ml="2"
+                          color="#002B5B"
+                        />
+                      }
+                      InputRightElement={
+                        <Pressable onPress={() => setShowPass(!showPass)}>
+                          <Icon
+                            as={
+                              <MaterialIcons
+                                name={
+                                  showPass ? "visibility" : "visibility-off"
+                                }
+                              />
+                            }
+                            size={5}
+                            mr="2"
+                            color="#002B5B"
+                          />
+                        </Pressable>
+                      }
+                      placeholder="Şifre"
+                    />
+                    {errors.password && touched.password ? (
+                      <HStack
+                        justifyContent={"flex-end"}
+                        alignItems={"center"}
+                        mt={-3}
+                        mr={2}
+                        mb={-2}
+                      >
+                        <MaterialIcons name="error" color={"red"} />
+                        <Text color={"red.500"}> {errors.password}</Text>
+                      </HStack>
+                    ) : null}
+                    <Input
+                      type={showPass ? "text" : "password"}
+                      rounded={"lg"}
+                      size={"2xl"}
+                      bgColor="transparent"
+                      borderColor="text.400"
+                      textContentType="oneTimeCode"
+                      variant={"filled"}
+                      onChangeText={handleChange("password2")}
+                      onBlur={handleBlur("password2")}
+                      value={values.password2}
+                      InputLeftElement={
+                        <Icon
+                          as={<MaterialIcons name="lock" />}
+                          size={5}
+                          ml="2"
+                          color="#002B5B"
+                        />
+                      }
+                      InputRightElement={
+                        <Pressable onPress={() => setShowPass(!showPass)}>
+                          <Icon
+                            as={
+                              <MaterialIcons
+                                name={
+                                  showPass ? "visibility" : "visibility-off"
+                                }
+                              />
+                            }
+                            size={5}
+                            mr="2"
+                            color="#002B5B"
+                          />
+                        </Pressable>
+                      }
+                      placeholder="Şifre Tekrar"
+                    />
+                    {errors.password2 && touched.password2 ? (
+                      <HStack
+                        justifyContent={"flex-end"}
+                        alignItems={"center"}
+                        mt={-3}
+                        mr={2}
+                        mb={-2}
+                      >
+                        <MaterialIcons name="error" color={"red"} />
+                        <Text color={"red.500"}> {errors.password2}</Text>
+                      </HStack>
+                    ) : null}
+                    <HStack justifyContent="flex-end" width="100%" px={2}>
+                      <Button
+                        mt="2"
+                        backgroundColor={"#002B5B"}
+                        onPress={handleSubmit}
+                        w={"50%"}
+                      >
+                        KAYIT OL
+                      </Button>
+                    </HStack>
+                  </VStack>
+                )}
+              </Formik>
+            </Box>
+            {/* )} */}
           </Center>
         </KeyboardAwareScrollView>
       </>
