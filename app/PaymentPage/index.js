@@ -66,20 +66,31 @@ const PaymentPage = () => {
           },
         })
       : (setLoading(true),
+        toast.show({
+          render: () => {
+            return (
+              <ToastAlertBox
+                description={"BİLET OLUŞTURULUYOR LÜTFEN BEKLEYİN !"}
+                status={"success"}
+              />
+            );
+          },
+        }),
         setTimeout(() => {
           setLoading(false);
           router.push("/TicketPage");
         }, 2000));
   };
 
-  return loading ? (
-    <Lottie
-      resizeMode="contain"
-      source={require("../../assets/ticket.json")}
-      autoPlay
-      loop
-    />
-  ) : (
+  // return loading ? (
+  //   <Lottie
+  //     resizeMode="contain"
+  //     source={require("../../assets/ticket.json")}
+  //     autoPlay
+  //     loop
+  //   />
+  // ) :
+  return (
     <>
       <Header title={"ÖDEME YAP"} back={true} />
       <KeyboardAwareScrollView
