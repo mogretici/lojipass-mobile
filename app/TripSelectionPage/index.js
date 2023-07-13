@@ -193,14 +193,14 @@ const TripSelectionPage = () => {
               Seçtiğiniz güzergah ve saatte sefer bulunmamaktadır.
             </Text>
           </Badge>
-          <Box w={"100%"} h={"50%"} mt={30}>
+          {/* <Box w={"100%"} h={"50%"} mt={30}>
             <Lottie
               resizeMode="cover"
               source={require("../../assets/animation.json")}
               autoPlay
               loop
             />
-          </Box>
+          </Box> */}
         </Center>
       )}
     </View>
